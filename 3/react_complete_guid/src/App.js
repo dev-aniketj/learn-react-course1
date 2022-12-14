@@ -1,13 +1,28 @@
-import logo from "./logo.svg";
 import "./App.css";
 import ExpenseItem from "./components/ExpenseItem";
 
 function App() {
   const expenses = [
-    { title: "Car Insurance", amount: 294.67, date: new Date(2022, 11, 24) },
-    { title: "Car Maintanice", amount: 310.53, date: new Date(2022, 12, 7) },
-    { title: "Car Repiar", amount: 145.91, date: new Date(2022, 12, 11) },
-    { title: "Car Paint", amount: 100.25, date: new Date(2022, 12, 14) },
+    {
+      title: "Car Insurance",
+      amount: 294.67,
+      date: new Date(2020, 11, 24).toDateString(),
+    },
+    {
+      title: "Car Maintanice",
+      amount: 310.53,
+      date: new Date(2021, 0, 7).toDateString(),
+    },
+    {
+      title: "Car Repiar",
+      amount: 145.91,
+      date: new Date(2021, 3, 11).toDateString(),
+    },
+    {
+      title: "Car Paint",
+      amount: 100.25,
+      date: new Date(2021, 8, 14).toDateString(),
+    },
   ];
 
   return (
@@ -34,7 +49,11 @@ function App() {
         amount={expenses[3].amount}
         date={expenses[3].date}
       />
-      <ExpenseItem />
+      <ExpenseItem
+        title={"Car Color"}
+        amount={100}
+        date={new Date(2022, 10, 32).toDateString()}
+      />
     </div>
   );
 }
