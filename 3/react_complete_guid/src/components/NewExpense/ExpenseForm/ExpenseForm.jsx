@@ -1,23 +1,13 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
+
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [entertedDate, setEnteredDate] = useState("");
 
-  // const [userInput, setUserInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   entertedDate: "",
-  // });
-
   const titleChangeHandler = (event) => {
-    // get the previous state data
-    // setUserInput((prevState) => {
-    //   return { ...prevState, enteredTitle: event.target.value };
-    // });
-
     setEnteredTitle(event.target.value);
   };
 
@@ -30,16 +20,22 @@ const ExpenseForm = () => {
   };
 
   const submitHandler = (event) => {
+    // we don't want to go on the another activity,
+    // because we are using form then it will definitely send it to the new page(screen).
     event.preventDefault();
 
+    // get all the data from the variables and
+    // make a package of expenseData Object
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(entertedDate),
     };
 
-    console.log(expenseData);
-
+    // get all the data from the expenseData and
+    // added ID in it form the Parent component using props. 
+    props.onSaveExpenseData(expenseData);
+    
     // clear all the input fields
     setEnteredTitle("");
     setEnteredAmount("");
